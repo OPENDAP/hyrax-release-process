@@ -1,2 +1,2 @@
-# hyrax-release-process
-The developer's release process for Hyrax Data Server.
+# Hyrax Release Process
+Where you can find our release process for the Hyrax Data Server.

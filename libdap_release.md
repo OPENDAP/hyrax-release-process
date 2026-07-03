@@ -1,6 +1,8 @@
-This page covers the step needed to release the libdap software for
-Hyrax. There is are separate pages for the BES and OLFS code and an
-overview page that describes how the website is updated and lists are
+# libdap release 
+This page covers the steps needed to release the libdap software library 
+used by the Hyrax Data Server.
+There is a separate page for making a release of the Hyrax server with 
+an overview page that describes how the website is updated and lists are
 notified.
 
 We now depend on the CI/CD process to build binary packages and to test

@@ -19,7 +19,8 @@ Hyrax is built from several component projects:
 * hyrax-regression-tests
 * hyrax-docker
 
-When making a release every component should:
+When making a release, for each of these components we need to:
+* Update the component's base version number. (For example `1.18.7` --> `1.18.8` or `1.18.7` --> `1.19.0`)
 * Update the component's Travis Build Offset and base version numbers.
 * A GitHub release should be made for the component, and the associated DOI badges for each component collected from Zenodo for use in the release documentation.
 * 

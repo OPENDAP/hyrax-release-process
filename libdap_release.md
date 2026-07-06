@@ -1,5 +1,5 @@
 # libdap release 
-This page covers the steps needed to release the libdap software library 
+Here are the steps a developer should follow to release the libdap software library 
 used by the Hyrax Data Server.
 There is a separate page for making a release of the Hyrax server with 
 an overview page that describes how the website is updated and lists are

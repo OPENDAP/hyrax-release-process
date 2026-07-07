@@ -26,7 +26,7 @@ When making a release, for each of these components we need to:
 
 
 ## Regarding DOIs
-James said:
+James said, w.r.t. **libdap**:
 > I skimmed over this whole document in the repo and I think it's correct - it's hard to know without going through the process. But, there is one thing I'm sure of. There is (now) a better way to handle the DOI situation. Zenodo recognizes that software has versions and that embedding the DOI for a commit in a file that is part of that commit is a catch-22. So, they now have a DOI that doesn't change but always references the 'newest version.' It takes some hunting to find this, but once you do, this is set. You never need to update this in the README, etc.
 >
 > I did this, so we can drop this step. See https://zenodo.org/records/14646648. There, on the right you will see:

@@ -60,13 +60,13 @@ The library API/ABI version is represented as CURRENT:REVISION:AGE.
 
 The rules for shared image version numbers:
 
-:# No interfaces changed, only implementations (good): Increment
+* No interfaces changed, only implementations (good): Increment
 REVISION.
 
-:# Interfaces added, none removed (good): Increment CURRENT, set
+* Interfaces added, none removed (good): Increment CURRENT, set
 REVISION to 0, increment AGE.
 
-:# Interfaces removed or changed (BAD, breaks upward compatibility):
+* Interfaces removed or changed (BAD, breaks upward compatibility):
 Increment CURRENT, set REVISION to 0 , and set AGE to 0.
 
 See the *Appendix: How to see the scope of API/ABI changes in C++
@@ -91,16 +91,13 @@ DAPLIB_AGE=###
 Perform the human driven [Common Release Tasks](common_release_tasks.md)
 and then come right back here.
 
-
 ### Commit
-
-- Commit and push the code. Wait for the CI/CD builds to complete. You
-  must be working on the *master* branch to get the CD package builds to
-  work.
+Commit and push the code. Wait for the CI/CD builds to complete. You
+must be working on the *master* branch to get the CD package builds to
+work.
 
 ### Update the Build Offset
-
-*Setting the build offset correctly will set the build number for the
+> *Setting the build offset correctly will set the build number for the
 new release to "0".*
 
 In the file `travis/travis_libdap_build_offset.sh` set the value of
@@ -111,7 +108,7 @@ page for libdap4](https://app.travis-ci.com/github/OPENDAP/libdap4) and
 use that build number plus 1.
 
 This is not the build number for the package. It is the build number
-used by Travis, which is the the total number of times Travis has build
+used by Travis, which is the total number of times Travis has built
 the code. This number is the build number on the left-hand TOC
 
 Once you have updated the `travis/travis_libdap_build_offset.sh` commit
@@ -136,7 +133,7 @@ the Hyrax release number:
     hashes that git tracks for submodules. This cuts down on the
     bookkeeping for releases and removes one source of error.
 
-### Create the release on Github
+### Create the release on GitHub
 
 Goto the 'tags' page ('code' then 'tags' at the top of the directory
 window) and click the 'Tags' tab. There, click the ellipses (...) on the
@@ -147,7 +144,7 @@ right of the 'version-\*' tag and:
     field
 3.  Click *Update this release* or *Save draft*
 
-This will trigger a 'archive and DOI' process on the Zenodo system.
+This will trigger an 'archive and DOI' process on the Zenodo system.
 
 ### Publish and Sign
 
@@ -197,7 +194,7 @@ push (or pull) these files onto www.opendap.org/pub/source.
 2.  Click on the new version, then click on the DOI tag in the pane on
     the right of the page for the given release.
 3.  Copy the DOI as markdown from the window that pops up and paste that
-    into the info for the version back in Github land.
+    into the info for the version back in GitHub land.
 4.  Also paste that into the README file. Commit using *\[skip ci\]* so
     we don't do a huge build (or do the build, it really doesn't matter
     that much).
@@ -216,10 +213,10 @@ extent of the changes that have been made)
 
 For C++, build a file of the methods and their arguments using:
 
-
-**nm .libs/libdap.a \| c++filt \| grep ' T .\*::' \| sed 's@.\* T
-$.*$@\1@' \> libdap_funcs**
-
+```
+nm .libs/libdap.a \| c++filt \| grep ' T .\*::' \| sed 's@.\* T
+$.*$@\1@' \> libdap_funcs
+```
 and compare that using `diff` on the previous release's library.
 
 Assess the changes you find based on the following rules for the values

@@ -1,4 +1,4 @@
-# libdap release 
+# libdap release process
 Here are the steps a developer should follow to release the libdap software library 
 used by the Hyrax Data Server.
 There is a separate page for making a release of the Hyrax server with 
@@ -10,59 +10,17 @@ the source builds. When the source code is tagged and marked as a
 release in GitHub, our linked Zenodo account archives that software and
 mints a DOI for it.
 
-## The Release Process
-
-**Tip**: If, while working on the release, you find you need to make
+> [!TIP] **Tip**: If, while working on the release, you find you need to make
 changes to the code, and you know the CI build will fail, do so on a
 *release branch* that you can merge and discard later. Do not make a
 release branch unless you need to since it complicates making tags.
 
-### Verify the code base
+### Update your local the code base
 
-1.  We release using the *master* branch. The code on *master* must pass
-    the CI build.
-2.  Make sure that the source code you're using for the following steps
-    is up-to-date. (*git pull*)
+1. Change to the _master_ branch. 
+2. Do a `git pull`
 
-### Update Release Files
-
-Update the text documentation files and version numbers in the
-configuration files:
-
-**Note**
-It's helpful to have, in the **NEWS** file, the Web site and the release
-notes, a list of the Jira tickets that have been closed since the last
-release. The best way to do this is to goto *Jira's Issues* page and
-look at the *Tickets closed recently* item. From there, click on
-*Advanced* and edit the time range so it matches the time range since
-the past release to now, then *Export* that info as an excel spreadsheet
-(the icon with a hat and a down arrow). YMMV regarding how easy this is
-and Jira's UI changes often.
-
-#### Update the **ChangeLog** file.
-
-Use the script [`gitlog-to-changelog`](./bin/gitlog-to-changelog) (which can be found with Google or there's one checked in to the bin directory.) 
-To update the **ChangeLog** file by running it using the
-`--since="`<date>`"` option with a date one day later in time than the
-newest entry in the current ChangeLog.
-
-
-**gitlog-to-changelog --since="1970-01-01"** (*Specify a date one day
-later than the one at the top of ChangeLog*)
-
-Save the result to a temp file and combine the two files:
-: **cat tmp ChangeLog \> ChangeLog.tmp; mv ChangeLog.tmp ChangeLog** If
-you're making the first ChangeLog entries, then you'll need to create
-the ChangeLog file first.
-**Tip**: *When you're making the commit log entries, use line breaks so
-ChangeLog will be readable. That is, use lines \< 80 characters long.*
-
-#### Update the NEWS file
-
-To update the NEWS file, just read over the new ChangeLog entries and
-summarize.
-
-#### Update the Version Numbers
+### Update the Version Numbers
 
 There are really 2 version numbers for each of these project items. The
 *human* version (like version-3.17.5) and the *library* API/ABI version
@@ -74,33 +32,31 @@ example, we might make a major API/ABI change and have to change to a
 new Libtool version like `25:0:0` but the human version might only
 change from bes-3.17.3 to bes-3.18.0
 
-##### Version for Humans
+#### Version for Humans
 
 1.  Determine the human version number. This appears to be a somewhat
     subjective process.
 2.  Edit each of the *Affected Files* and update the human version
     number.
 
-:;Affected Files:
+##### Affected Files:
+
+* *configure.ac* - Look for:
 
 
+```
+AC_INIT(libdap, ###.###.###, opendap-tech@opendap.org)
+```
 
-***configure.ac*** - Look for:
+* *debian/changelog* - See [Debian ChangeLog](https://www.debian.org/doc/manuals/maint-guide/dreq.en.html#changelog) documentation)
+  > [!NOTE]
+  > The `debian/changelog` is the "single source of truth"
+  > for the libdap4 version in the debian packaging. If this does not agree
+  > with the version being packaged the package build will fail.*
 
+* *README.md*
 
-`AC_INIT(libdap, ###.###.###, opendap-tech@opendap.org)`
-
-debian/changelog (see [Debian
-ChangeLog](https://www.debian.org/doc/manuals/maint-guide/dreq.en.html#changelog))
-
-
-**Take Note!** *The `debian/changelog` is the "single source of truth"
-for the libdap4 version in the debian packaging. If this does not agree
-with the version being packaged the package build will fail.*
-
-**README.md**
-
-**INSTALL**
+* *INSTALL*
 
 ##### API/ABI Version
 
@@ -121,15 +77,24 @@ See the *Appendix: How to see the scope of API/ABI changes in C++
 sources* below for gruesome details. Often basic knowledge of the edits
 is good enough.
 
-Affected Files:
-***configure.ac*** - Look for
-
-
+##### Affected Files
+*configure.ac* - Look for
+``` 
 DAPLIB_CURRENT=###
 
 DAPLIB_REVISION=###
 
 DAPLIB_AGE=###
+
+DAPLIB_REVISION=###
+
+DAPLIB_AGE=###
+```
+
+### [Common Release Tasks](common_release_tasks.md)
+Perform the human driven [Common Release Tasks](common_release_tasks.md)
+and then come right back here.
+
 
 ### Commit
 

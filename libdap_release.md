@@ -10,12 +10,12 @@ the source builds. When the source code is tagged and marked as a
 release in GitHub, our linked Zenodo account archives that software and
 mints a DOI for it.
 
-> [!TIP] **Tip**: If, while working on the release, you find you need to make
+> **Tip**: If, while working on the release, you find you need to make
 changes to the code, and you know the CI build will fail, do so on a
 *release branch* that you can merge and discard later. Do not make a
 release branch unless you need to since it complicates making tags.
 
-### Update your local the code base
+### Update your local libdap4 code base
 
 1. Change to the _master_ branch. 
 2. Do a `git pull`
@@ -42,20 +42,16 @@ change from bes-3.17.3 to bes-3.18.0
 ##### Affected Files:
 
 * *configure.ac* - Look for:
-
-
 ```
 AC_INIT(libdap, ###.###.###, opendap-tech@opendap.org)
 ```
-
 * *debian/changelog* - See [Debian ChangeLog](https://www.debian.org/doc/manuals/maint-guide/dreq.en.html#changelog) documentation)
-  > [!NOTE]
+  > **Note**:
   > The `debian/changelog` is the "single source of truth"
   > for the libdap4 version in the debian packaging. If this does not agree
   > with the version being packaged the package build will fail.*
 
 * *README.md*
-
 * *INSTALL*
 
 ##### API/ABI Version

@@ -154,7 +154,7 @@ GitHub release page for the BES.
 See the section on this page titled "*Get the BES DOI from Zenodo*" for
 more details about getting the DOI markdown.
 
-## ~~Update the RPM dependencies~~
+### ~~Update the RPM dependencies~~
 
 ~~Affected Files:
 *bes.spec\*.in*~~
@@ -165,7 +165,7 @@ more details about getting the DOI markdown.
 ~~- Be attentive to changes that have been made to the hyrax-dependencies~~
   ~~since the last release.~~
 
-## Update the module version numbers for humans
+### Update the module version numbers for humans
 
 In bes/modules/common, check that the file all-modules.txt is complete
 and update as needed. Then run:
@@ -198,6 +198,12 @@ to any modules not in the BES GitHub repo).
 3.  ~~Update the module version numbers in their respective Makefile.am
     files.~~
 4.  ~~Commit and Push these changes.~~
+
+
+## [Common Release Tasks](common_release_tasks.md)
+Perform the human driven [Common Release Tasks](common_release_tasks.md)
+to update the human-readable release files and then come right back here.
+
 
 ## Update the Build Offset
 
@@ -260,6 +266,10 @@ bookkeeping for releases and removes one source of error.*
       - If you have previously edited the release page you can click
         **Update this release**
 
+
+<!--
+Removing this because why do it? GitHub has it...
+
 ## Publish and Sign The Source Release
 
 When the release is made on GitHub the source tar bundle is made
@@ -298,7 +308,7 @@ push (or pull) these files onto www.opendap.org/pub/source.
     2.  Verify the signature:
 
         `gpg --verify bes-x.y.z.tgz.sig bes-x.y.z.tgz`
-
+-->
 ## Get the BES DOI from Zenodo
 
 Get the Zenodo DOI for the newly created BES release and add it to the

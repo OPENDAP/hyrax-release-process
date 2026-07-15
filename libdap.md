@@ -97,7 +97,7 @@ must be working on the *master* branch to get the CD package builds to
 work.
 
 ### Update the Build Offset
-> *Setting the build offset correctly will set the build number for the
+> **TIP**: *Setting the build offset correctly will set the build number for the
 new release to "0".*
 
 In the file `travis/travis_libdap_build_offset.sh` set the value of

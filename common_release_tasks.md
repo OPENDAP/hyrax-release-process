@@ -18,8 +18,26 @@ has its own version change process/instructions. For the purposes of these
 general instructions, do that part now if you have not already. The version
 numbers are needed in the next bit.
 
-### Update Release Files
-Update the text documentation files for humans
+### Update the Build Offset
+> *Setting the build offset correctly will set the build number for the
+new release to "0".*
+
+In the file `travis/*_build_offset.sh` set the value of
+`LIBDAP_TRAVIS_BUILD_OFFSET` to the number of the last TravisCI build
+plus one. The previous commit and push will have triggered a TravisCI
+build. Find the build number for the previous commit in [the TravisCI
+page for libdap4](https://app.travis-ci.com/github/OPENDAP/libdap4) and
+use that build number plus 1.
+
+This is not the build number for the package. It is the build number
+used by Travis, which is the total number of times Travis has built
+the code. This number is the build number on the left-hand TOC
+
+Once you have updated the `travis/*_build_offset.sh` commit
+and push this change. Do NOT use a `[skip ci]` string in the commit
+message as it is important that this commit run through the entire CI
+process.
+
 
 #### What Issues Were Closed That Affect The Released Software 
 It's helpful to have, in the **NEWS** file, the Website and the release
@@ -65,4 +83,4 @@ summarize.
 - Look at the way the NEWS file is formatted and continue with same.
 - Start a new section for this release at the top of the file.
 - Add the version number and the date at the beginning of the section
-
+release

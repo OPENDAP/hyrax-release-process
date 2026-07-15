@@ -26,7 +26,7 @@ and then come right back here.
     If there's a problem with the CI builds at this point you may wish
     to follow the advice of ***Herman Wouk***: *"When in danger or in
     doubt, run in circles, scream and shout"*
-
+<!--
 ## Publish and Sign
 All you need do is build the tar file using `make dist`, sign it, and
 push (or pull) these files onto www.opendap.org/pub/source.
@@ -58,6 +58,7 @@ push (or pull) these files onto www.opendap.org/pub/source.
      gpg --verify hyrax-dependencies-x.y.tar.sig hyrax-dependencies-x.y.tar
      ```
 
+-->
 
 ## Tag The Release
 1.  Tag, and push the tag.
@@ -72,3 +73,10 @@ push (or pull) these files onto www.opendap.org/pub/source.
     examples)
 4.  Copy the most recent text from the NEWS file into the describe field
 5.  Click Save/Update this release.
+
+## hyrax-dependencies Release Assets 
+Internal: 
+* Our CICD produces a tar file of the installed includes, executables, and libraries of the hyrax-dependencies. The tar file is placed in S3 for use in building the `bes_core` docker images.
+
+External:
+* Source bundle tied to the GitHub release page.

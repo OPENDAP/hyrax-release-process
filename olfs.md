@@ -17,7 +17,7 @@ number is changed) should contain:
 
 Make sure that all the developers working on the code have checked in
 their working copies of the trunk, and that all development branches
-whose functionality/features/codeBase are to included in the release
+whose functionality/features/codeBase are included in the release
 have been merged to the trunk and committed.
 
 ### Check out the master branch of the OLFS code from GitHub
@@ -171,7 +171,7 @@ git push
 ```
 
 
-Once this is done, use github to tag the code you just committed both
+Once this is done, use GitHub to tag the code you just committed both
 with its version and the version of hyrax to which it belongs:
 
 #### Tag the release
@@ -240,7 +240,7 @@ robots-olfs-1.2.3-webapp.tgz: Contains just the robots webapp that can supply si
         `gpg --verify olfs-####.tgz.sig olfs-####.tgz`
 
 Use [GPG to detach sign](SecureEmail#Encrypting_files "wikilink") each
-of these three files and you're ready to upload them to the website for
+of these three files, and you're ready to upload them to the website for
 distribution.
 -->
 

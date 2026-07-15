@@ -49,7 +49,7 @@ out GitHub repository.
 For the Jira issues, goto the *[NASA Jira Issues](https://bugs.earthdata.nasa.gov/secure/RapidBoard.jspa?rapidView=901&projectKey=HYRAX&view=planning.nodetail&issueLimit=100)* page and
 look at the *Tickets closed recently* item. From there, click on
 *Advanced* and edit the time range so it matches the time range since
-the past release to now, then *Export* that info as an excel spreadsheet
+the past release to now, then *Export* that info as an Excel spreadsheet
 (the icon with a hat and a down arrow). YMMV regarding how easy this is
 and Jira's UI changes often. 
 

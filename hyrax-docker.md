@@ -8,9 +8,10 @@ The specific contents of the Hyrax docker image is dictated by the `build-recipe
 
 In order to make an offical numbered release of Hyrax we need to:
 ## Update the Hyrax Version numbers.
-  * Edit `hyrax-docker/travis/version_and_build_offsets.sh` and update the `HYRAX_RELEASE_VERSION` and `TRAVIS_HYRAX_BUILD_OFFSET` values. 
+  * Edit the file `hyrax-docker/travis/version_and_build_offsets.sh` and update the `HYRAX_RELEASE_VERSION` and `TRAVIS_HYRAX_BUILD_OFFSET` values. 
+  * Set the `HYRAX_RELEASE_VERSION` to the new version of Hyrax that is being released (ex: `1.18.0`)
   * Set the `TRAVIS_HYRAX_BUILD_OFFSET` value to the number of the last TravisCI build plus one. The previous commit and push will have triggered a TravisCI build. Find the build number for the previous commit in the TravisCI page for `hyrax-docker` and use that Travis build number plus 1.
-  * 
+
 ## Perform the [Common Release Tasks](common_release_tasks.md)
 
 ## Copy the build recipe(s) to the releases' directory.

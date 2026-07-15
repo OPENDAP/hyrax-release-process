@@ -29,7 +29,9 @@ To update:
       1.  Add the new release to the list of Release and Docker files.
       2.  Update the link to the ''Latest' Docker file.
 
-## Commit the changes locally.
+## Commit! 
+* Commit the changes locally.
+* Push the commited changes to DockerHub
 
 ## Tag the Repository.
   1.  Make sure all changes have been pushed and merged to the master
@@ -40,7 +42,6 @@ To update:
     git tag -a hyrax-`<numbers>` -m "Hyrax `<number>`"`
     git push origin hyrax-`<numbers>
 ```
-## Push the commited changes to DockerHub
 
 ## Create a GitHub release
   * Goto the 'tags' page ('code' then 'tags' at the top of the directory window) and click the 'Tags' tab. There, click the ellipses (...) on the right of the 'version-\*' tag and:

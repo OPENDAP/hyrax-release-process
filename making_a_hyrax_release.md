@@ -33,3 +33,11 @@ James said, w.r.t. **libdap**:
 >>Cite all versions? You can cite all versions by using the DOI 10.5281/zenodo.1013914. This DOI represents all versions, and will always resolve to the latest one. Read more.
 
 >The only thing that needs to be done WRT the DOI is to check that the tagging worked and that Zenodo really did archive a new release of the code.
+
+
+Here's an evolving  picture of the new release proces:
+
+<figure>
+<img src="./img/ProcessProductsDiagram-NEW.jpg" alt="./img/ProcessProductsDiagram-NEW.jpg" />
+<figcaption>Evolving Hyrax Release Process</figcaption>
+</figure>

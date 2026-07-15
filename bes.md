@@ -7,7 +7,7 @@ and the final result is a docker image of the BES.
 
 
 > **Tip**: If, while working on the release, you find you need to make
-changes to the code and you know the CI build will fail, do so on a
+changes to the code, and you know the CI build will fail, do so on a
 *release branch* that you can merge and discard later. Do not make a
 release branch if you don't **need** it, since it complicates making
 tags.
@@ -216,7 +216,7 @@ build number plus 1.
 > **!!** You must be working on the *master* branch to get the CD package
     builds to work.
 
-*Be sure that you have completed all of the changes to the various
+*Be sure that you have completed all the changes to the various
 ChangeLog, NEWS, INSTALL, configure.ac,
 `travis/travis_bes_build_offset.sh`, and other files before proceeding!*
 
@@ -251,7 +251,7 @@ bookkeeping for releases and removes one source of error.*
 4.  On the [Tags page](https://github.com/OPENDAP/bes/tags), locate the
     tag (created above) associated with this new release.
 5.  Click the ellipses (...) located on the far right side of the
-    *version-x.y.z* tag 'frame' for this release and and choose *Create
+    *version-x.y.z* tag 'frame' for this release and choose *Create
     release*.
     - Enter a *title* for the release
     - Copy the most recent text from the NEWS file into the *describe*

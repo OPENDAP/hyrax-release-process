@@ -34,6 +34,9 @@ Here are the Hyrax components, in the suggested order for the release process.
 
 
 
+---
+
+---
 
 >When making a release, for each of these components we need to:
 >* Update the component's base version number. (For example `1.18.7` --> `1.18.8` or `1.18.7` --> `1.19.0`)

@@ -1,3 +1,8 @@
 #!/bin/bash
-
-./bin/gitlog-to-changelog --since="1970-01-01" 2>&1 | fold -s -w 72 | awk '{if(!match($0,"^[0-9]|^[\\t]")){printf("\t%s\n",$0);}else{print $0;}}' -
+# Runs gitlog-to-changelog and wrps it to
+#
+SINCE="${1:-"1970-01-01"}"
+FOLD="${2:-"72"}"
+./bin/gitlog-to-changelog --since="$SINCE" 2>&1 \
+    | fold -s -w "$FOLD" \
+    | awk '{if(!match($0,"^[0-9]|^[\\t]")){printf("\t%s\n",$0);}else{print $0;}}' -

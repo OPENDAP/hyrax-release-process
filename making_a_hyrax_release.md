@@ -23,8 +23,8 @@ Here are the Hyrax components, in the suggested order for the release process.
   * Internal Assets: *The `bes_core` docker image that will be used to make Hyrax docker containers.*
   * Released assets: *none*.
 * [olfs](olfs.md)
-  * Internal Assets: *The various WAR files produced by the CICD build. 
-    Used to assemble the Hyrax docker images.*
+  * Internal Assets: *The various WAR files produced by the CICD 
+    build and used to assemble the Hyrax docker images.*
   * Released assets: *none*.
 * hyrax-regression-tests
   * Released assets: *none*.

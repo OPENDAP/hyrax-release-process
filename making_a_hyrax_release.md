@@ -5,7 +5,7 @@ Hyrax is made of several software components. Some of these are OPeNDAP software
 
 ### Release Products
 Our release products are:
-* **_libdap_** [As source and RPM binaries.](./libdap_release.md)
+* **_libdap_** [As source and RPM binaries.](libdap.md)
 * **_hyrax_** The Hyrax data server bundled as a docker image.
 * **_hyrax:ngap_** The Hyrax NGAP service bundled as docker image.
 

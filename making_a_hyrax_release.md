@@ -10,43 +10,35 @@ Our release products are:
 * **_hyrax:ngap_** The Hyrax NGAP service bundled as docker image.
 
 
-### Belease Ropadmap
+### Release Roadmap
 Hyrax is built from several component projects, each of which must be release in at least a most minimal way, for example just version numbers and git tags.
 Here are the Hyrax components, in the suggested order for the release process.
 
 * [hyrax-dependencies](hyrax-dependencies.md) 
-  * Version numbers, ChangeLog, and NEWS updated. 
-  * GitHub release. 
   * Internal Assets: Tarballs of the compiled dependency libraries for use in build the BES.
   * Released assets: **none**.
 * [libdap4](libdap.md) 
-  * Version numbers, ChangeLog, and NEWS updated. 
-  * GitHub release. 
   * Released assets: **Source code tarball & RPM files**. 
 * [bes](bes.md)
-  * Version numbers, ChangeLog, and NEWS updated. 
-  * GitHub release. 
   * Internal Assets: The `bes_core` docker image that will be used to make Hyrax docker containers.
   * Released assets: **none**.
-* ~~[olfs](olfs.md)~~ (docs pending) 
-  * Version numbers, ChangeLog, and NEWS updated. 
-  * GitHub release. 
+* [olfs](olfs.md)
   * Internal Assets: The various WAR files produced by the CICD build. 
     Used to assemble the Hyrax docker images.
   * Released assets: **none**.
 * hyrax-regression-tests
-  * Version numbers, ChangeLog, and NEWS updated.
-  * GitHub release. 
   * Released assets: **none**.
 * ~~[hyrax-docker](hyrax-docker.md)~~ (docs pending) 
-  * Version numbers, ChangeLog, and NEWS updated. 
-  * GitHub release. 
   * Released assets: **Hyrax docker images in DockerHub**.
 
-When making a release, for each of these components we need to:
-* Update the component's base version number. (For example `1.18.7` --> `1.18.8` or `1.18.7` --> `1.19.0`)
-* Update the component's Travis Build Offset and base version numbers.
-* A GitHub release should be made for the component, and the associated DOI badges for each component collected from Zenodo for use in the release documentation.
+
+
+
+
+>When making a release, for each of these components we need to:
+>* Update the component's base version number. (For example `1.18.7` --> `1.18.8` or `1.18.7` --> `1.19.0`)
+>* Update the component's Travis Build Offset and base version numbers.
+>* A GitHub release should be made for the component, and the associated DOI badges for each component collected from Zenodo for use in the release documentation.
 
 
 ## Regarding DOIs

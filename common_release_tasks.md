@@ -66,8 +66,15 @@ To update the **ChangeLog** file by running it using the
 `--since="`<date>`"` option with a date one day later in time than the
 newest entry in the current ChangeLog.
 
-**gitlog-to-changelog --since="1970-01-01"** (*Specify a date one day
-later than the one at the top of ChangeLog*)
+```
+gitlog-to-changelog --since="1970-01-01"
+```
+** (*Specify a date one day later than the one at the top of ChangeLog*)
+
+> Tip - This command gets the entire gitlog and reformats it to change log, wrapping and indenting long lines to under 80 characters. Be sure to update the date to the latest date in the current ChangeLog file.:
+```
+gitlog-to-changelog --since="1970-01-01" 2>&1 | fold -s -w 72 | awk '{if(!match($0,"^[0-9]|^[\\t]")){printf("\t%s\n",$0);}else{print $0;}}' -
+```
 
 Save the result to a temp file and combine the two files:
 : **cat tmp ChangeLog \> ChangeLog.tmp; mv ChangeLog.tmp ChangeLog** If

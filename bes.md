@@ -342,3 +342,12 @@ you have to search for the string:* `libdap4`
 ## Update the online reference documentation
 
 1.  *make gh-docs*
+
+
+
+## BES Release Assets 
+Internal: 
+* The bes_core docker images built by CICD and lodged in DockerHub.
+
+External:
+* Source bundle tied to the GitHub release page.

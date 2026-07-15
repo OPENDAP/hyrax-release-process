@@ -242,3 +242,12 @@ Once you have determined the new values of the `CURRENT:REVISION:AGE`
 strings then:
 
 Edit the configure.ac and update the version values to the new ones.
+
+## libdap Release Assets 
+Internal: 
+* RPM files. The CICD will automatically build the libdap RPM files. when the release file changes are pushed/merged to master/main. These assets will then be utilized by hyrax-docker to build the public released docker images.
+
+External:
+* Source bundle tied to the GitHub release page.
+* The release RPM files built by CICD.
+

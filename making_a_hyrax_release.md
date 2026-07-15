@@ -12,12 +12,30 @@ Our release products are:
 
 ### Hyrax Components
 Hyrax is built from several component projects:
-* [hyrax-dependencies](hyrax-dependencies.md) Version numbers, ChangeLog, and NEWS updated. GitHub release. Released assets: none.
-* [libdap4](libdap.md) Version numbers, ChangeLog, and NEWS updated. GitHub release. Released assets: Source code tarball & RPM files. 
-* [bes](bes.md)  Version numbers, ChangeLog, and NEWS updated. GitHub release. Released assets: none.
-* ~~[olfs](olfs.md)~~ (docs pending) Version numbers, ChangeLog, and NEWS updated. GitHub release. Released assets: none.
+* [hyrax-dependencies](hyrax-dependencies.md) 
+  * Version numbers, ChangeLog, and NEWS updated. 
+  * GitHub release. 
+  * Released assets: **none**.
+* [libdap4](libdap.md) 
+  * Version numbers, ChangeLog, and NEWS updated. 
+  * GitHub release. 
+  * Released assets: **Source code tarball & RPM files**. 
+* [bes](bes.md)
+  * Version numbers, ChangeLog, and NEWS updated. 
+  * GitHub release. 
+  * Released assets: **none**.
+* ~~[olfs](olfs.md)~~ (docs pending) 
+  * Version numbers, ChangeLog, and NEWS updated. 
+  * GitHub release. 
+  * Released assets: **none**.
 * hyrax-regression-tests
-* ~~[hyrax-docker](hyrax-docker.md)~~ (docs pending) Version numbers, ChangeLog, and NEWS updated. GitHub release. Released assets Hyrax docker images.
+  * Version numbers, ChangeLog, and NEWS updated.
+  * GitHub release. 
+  * Released assets: **none**.
+* ~~[hyrax-docker](hyrax-docker.md)~~ (docs pending) 
+  * Version numbers, ChangeLog, and NEWS updated. 
+  * GitHub release. 
+  * Released assets: **Hyrax docker images in DockerHub**.
 
 When making a release, for each of these components we need to:
 * Update the component's base version number. (For example `1.18.7` --> `1.18.8` or `1.18.7` --> `1.19.0`)
@@ -34,10 +52,10 @@ James said, w.r.t. **libdap**:
 
 >The only thing that needs to be done WRT the DOI is to check that the tagging worked and that Zenodo really did archive a new release of the code.
 
-
+## Release Diagram
 Here's an evolving  picture of the new release proces:
 
 <figure>
-<img src="./img/ProcessProductsDiagram-NEW.jpg" alt="./img/ProcessProductsDiagram-NEW.jpg" />
+<img src="./img/ProcessProductsDiagram-NEW-DRAFT.jpg" alt="./img/ProcessProductsDiagram-NEW.jpg" />
 <figcaption>Evolving Hyrax Release Process</figcaption>
 </figure>

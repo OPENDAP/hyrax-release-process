@@ -12,6 +12,9 @@ changes to the code and you know the CI build will fail, do so on a
 release branch if you don't **need** it, since it complicates making
 tags.
 
+
+> TODO - Add the docker image information (**_bes_core_** etc.)
+
 ## Verify the code base
 
 1.  We release using the *master* branch. The code on *master* must have

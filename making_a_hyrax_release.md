@@ -10,11 +10,14 @@ Our release products are:
 * **_hyrax:ngap_** The Hyrax NGAP service bundled as docker image.
 
 
-### Hyrax Components
-Hyrax is built from several component projects:
+### Belease Ropadmap
+Hyrax is built from several component projects, each of which must be release in at least a most minimal way, for example just version numbers and git tags.
+Here are the Hyrax components, in the suggested order for the release process.
+
 * [hyrax-dependencies](hyrax-dependencies.md) 
   * Version numbers, ChangeLog, and NEWS updated. 
   * GitHub release. 
+  * Internal Assets: Tarballs of the compiled dependency libraries for use in build the BES.
   * Released assets: **none**.
 * [libdap4](libdap.md) 
   * Version numbers, ChangeLog, and NEWS updated. 
@@ -23,10 +26,13 @@ Hyrax is built from several component projects:
 * [bes](bes.md)
   * Version numbers, ChangeLog, and NEWS updated. 
   * GitHub release. 
+  * Internal Assets: The `bes_core` docker image that will be used to make Hyrax docker containers.
   * Released assets: **none**.
 * ~~[olfs](olfs.md)~~ (docs pending) 
   * Version numbers, ChangeLog, and NEWS updated. 
   * GitHub release. 
+  * Internal Assets: The various WAR files produced by the CICD build. 
+    Used to assemble the Hyrax docker images.
   * Released assets: **none**.
 * hyrax-regression-tests
   * Version numbers, ChangeLog, and NEWS updated.

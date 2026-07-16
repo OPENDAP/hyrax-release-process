@@ -1,5 +1,5 @@
-This task is to ensure that the *hyrax-dependencies* project is up to
-date and tar balls on www.o.o. are current.
+# hyrax-dependencies Release Process
+Here we make a re;ease of the hyrax-docker module.
 
 ### Update the Version Numbers
 

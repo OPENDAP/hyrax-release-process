@@ -39,13 +39,16 @@ tags.
 ```
 AC_INIT(bes, ###.###.###, opendap-tech@opendap.org)
 ```
-* ***debian/changelog***: 
+---
+* ***debian/changelog***
 see [Debian ChangeLog details](https://www.debian.org/doc/manuals/maint-guide/dreq.en.html#changelog))
+> ***Why continue with debian packaging numbers? We are building on rhel8 and rhel9 and that's it. No debian packages etc. So Can we drop it?***
+
 
 > **Take Note!** *The `debian/changelog` is the "single source of truth"
 for the libdap4 version in the debian packaging. If this does not agree
 with the version being packaged the package build will fail.*
-
+---
 * ***ChangeLog***
 * ***NEWS***
 * ***README.md***

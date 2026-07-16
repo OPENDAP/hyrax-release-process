@@ -1,5 +1,5 @@
 # hyrax-dependencies Release Process
-Here is the process to use to make an official numbered release of the hyrax-docker module. This is typically done in conjunction with an official Hyrax release.
+Here is the process for creating official numbered releases of the `hyrax-docker` module. This is typically done in conjunction with an official Hyrax release.
 
 ### Update the Version Numbers
 

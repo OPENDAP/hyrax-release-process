@@ -1,38 +1,43 @@
-# Hyrax (aka hyrax-docker) release process
+# Hyrax (aka hyrax-docker) Release Process
 
 This document describes how to make a release of the official Hyrax Docker image
 
 The Hyrax Docker images are the primary release asset for Hyrax. These images are automatically generated, versioned, and tagged by our TravisCI machine. 
 
-The specific contents of the Hyrax docker image is dictated by the `build-recipe`. When we make a release we want to copy the build-recipe(s) used to build the release inmage into the releases directory, renaming them with the Hyrax version (ex: `hyrax-1.18.0`)
+The specific contents of the Hyrax docker image is dictated by the `build-recipe`. When we make a release we want to copy the build-recipe(s) used to build the release image(s) into the releases directory, renaming them with the Hyrax version and OS information.
 
-In order to make an offical numbered release of Hyrax we need to:
-## Update the Hyrax Version numbers.
+## Update The Hyrax Version Numbers.
+In order to make an official numbered release of 
+Hyrax we need to update the Hyrax version numbers.
+
   * Edit the file `hyrax-docker/travis/version_and_build_offsets.sh` and update the `HYRAX_RELEASE_VERSION` and `TRAVIS_HYRAX_BUILD_OFFSET` values. 
+
   * Set the `HYRAX_RELEASE_VERSION` to the new version of Hyrax that is being released (ex: `1.18.0`)
+
   * Set the `TRAVIS_HYRAX_BUILD_OFFSET` value to the number of the last TravisCI build plus one. The previous commit and push will have triggered a TravisCI build. Find the build number for the previous commit in the TravisCI page for `hyrax-docker` and use that Travis build number plus 1.
 
 ## Perform the [Common Release Tasks](common_release_tasks.md)
 
 ## Copy the build recipe(s) to the releases' directory.
-  * Name the files `hyrax-<numbers>-build-recipe`
+  * Name the files `hyrax-<numbers>-TARGET_OS-build-recipe`
+> example: `hyrax-1.18.0-el9-build-recipe`
 
 ## Update The DockerHub Landing Pages
-In DockerHub each of our published Docker images has a landing page. The landing pages for the hyrax and the hyrax_ncwms images contain explanation and a list of links to official release version. These need to be updated. 
+In DockerHub each of our published Docker images has a landing page. The landing pages for the hyrax images contains an explanation and a list of links to official release version. These need to be updated. 
 
 To update:
   1.  Log into DockerHub
   2.  Navigate to <https://hub.docker.com/repository/docker/opendap/hyrax>
       1.  Add the new release to the list of Release and Docker files.
-      2.  Update the link to the ''Latest' Docker file.
+      2.  Update the link to the 'Latest' Docker file.
   3.  Navigate to
     <https://hub.docker.com/repository/docker/opendap/hyrax_ncwms>
       1.  Add the new release to the list of Release and Docker files.
-      2.  Update the link to the ''Latest' Docker file.
+      2.  Update the link to the 'Latest' Docker file.
 
 ## Commit! 
 * Commit the changes locally.
-* Push the commited changes to DockerHub
+* Push the commited changes to GitHub.
 
 ## Tag the Repository.
   1.  Make sure all changes have been pushed and merged to the master

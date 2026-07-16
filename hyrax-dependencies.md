@@ -14,8 +14,9 @@ Perform the human driven [Common Release Tasks](common_release_tasks.md)
 and then come right back here.
 
 ## Commit And Push
+
 1.  Save, commit, and push the changes to master branch.
-2.  Once the *hyrax-dependencies* CI build is finished
+2.  Since the hyrax-dependencies CICD builds do not trigger downstream builds in libdap or bes we need to do this by hand. Once the *hyrax-dependencies* CI build is finished
     1.  Trigger a CI build *libdap4* by pushing a small change to the
         *libdap4* master branch. When that CI build has completed
         successfully,

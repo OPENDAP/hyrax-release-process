@@ -28,7 +28,7 @@ Here are the Hyrax components, in the suggested order for the release process.
   * Released assets: *none*.
 * hyrax-regression-tests
   * Released assets: *none*.
-* ~~[hyrax-docker](hyrax-docker.md)~~ (docs pending) 
+* [hyrax-docker](hyrax-docker.md) (docs pending) 
   * Released assets: **Hyrax docker images in DockerHub**.
 
 

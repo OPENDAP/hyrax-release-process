@@ -17,12 +17,11 @@ and then come right back here.
 
 1.  Save, commit, and push the changes to master branch.
 2.  Since the hyrax-dependencies CICD builds do not trigger downstream builds in libdap or bes we need to do this by hand. 
-3.  Once the *hyrax-dependencies* CI build is finished Manually trigger a CI build *libdap4* by pushing a small change to the
-    *libdap4* master branch. When that CI build has completed
-    successfully,
+3.  Once the *hyrax-dependencies* CI build is finished manually trigger a CI build *libdap4* by pushing a small change to the
+*libdap4* master branch. For example, adding or removing blank lines from the end of the `libdap4/README.md` file. 
 4. Wait for the successful completion.
 
-    If there's a problem with the CI builds at this point you may wish
+>    If there's a problem with the CI builds at this point you may wish
     to follow the advice of ***Herman Wouk***: *"When in danger or in
     doubt, run in circles, scream and shout"*
 <!--
@@ -35,8 +34,10 @@ push (or pull) these files onto www.opendap.org/pub/source.
     in the directory above the top level of the **hyrax-dependencies**
     project.
 2.  Use **gpg** to sign the tar bundle:
+```
+gpg --detach-sign --local-user security@opendap.org ../hyrax-dependencies-x.y.tar
+```
 
-    `gpg --detach-sign --local-user security@opendap.org ../hyrax-dependencies-x.y.tar`
 3.  Use **sftp** to push the signature file and the tar bundle to the
     /httpdocs/pub/source directory on www.opendap.org
 

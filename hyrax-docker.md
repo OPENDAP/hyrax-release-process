@@ -20,7 +20,12 @@ Hyrax we need to update the Hyrax version numbers.
 
 ## Copy the build recipe(s) to the releases' directory.
   * Name the files `hyrax-<numbers>-TARGET_OS-build-recipe`
-> example: `hyrax-1.18.0-el9-build-recipe`
+
+Example: 
+```
+cp hyrax-docker/el9-build-recipe hyrax-docker/releases/hyrax-1.18.0-el9-build-recipe
+cp hyrax-docker/el8-build-recipe hyrax-docker/releases/hyrax-1.18.0-el8-build-recipe
+```
 
 ## Update The DockerHub Landing Pages
 In DockerHub each of our published Docker images has a landing page. The landing pages for the hyrax images contains an explanation and a list of links to official release version. These need to be updated. 

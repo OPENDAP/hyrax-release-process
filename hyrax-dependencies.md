@@ -16,13 +16,11 @@ and then come right back here.
 ## Commit And Push
 
 1.  Save, commit, and push the changes to master branch.
-2.  Since the hyrax-dependencies CICD builds do not trigger downstream builds in libdap or bes we need to do this by hand. Once the *hyrax-dependencies* CI build is finished
-    1.  Trigger a CI build *libdap4* by pushing a small change to the
-        *libdap4* master branch. When that CI build has completed
-        successfully,
-    2.  Trigger a CI build in the *bes* by pushing a small change to the
-        *bes* master branch.
-3.  Wait for the successful completion.
+2.  Since the hyrax-dependencies CICD builds do not trigger downstream builds in libdap or bes we need to do this by hand. 
+3.  Once the *hyrax-dependencies* CI build is finished Manually trigger a CI build *libdap4* by pushing a small change to the
+    *libdap4* master branch. When that CI build has completed
+    successfully,
+4. Wait for the successful completion.
 
     If there's a problem with the CI builds at this point you may wish
     to follow the advice of ***Herman Wouk***: *"When in danger or in

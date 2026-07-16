@@ -55,8 +55,10 @@ with the version being packaged the package build will fail.*
 * ***INSTALL***
 
 ### Update the internal library (API/ABI) version numbers.
-> **_TODO_**: **WHY DO THIS?** Does API/ABI versioning have any use or meaning now that we are no longer producing RPM files?
 
+---
+> **_TODO_**: **WHY DO THIS?** Does API/ABI versioning have any use or meaning now that we are no longer producing RPM files?
+---
 The BES is ***not*** a shared library, it is a set of c++ applications
 that are typically built as statically linked binaries. Because of this
 the usual CURRENT:REVISION:AGE tuples used to express the binary

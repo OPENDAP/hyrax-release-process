@@ -45,21 +45,11 @@ notes, a list of the tickets that have been closed since the last
 release. There are two ticketing systems in play for our work, NASA's Jira and
 out GitHub repository. 
 
----
-> MOVE THIS JIRA SECTION TO IT"S OWN DOCUMENT AND DO IT LAST, AFTER hyrax-docker because the results are only needed by the WEB PAGE
-##### NASA Jira Issues
-For the Jira issues, goto the *[NASA Jira Issues](https://bugs.earthdata.nasa.gov/secure/RapidBoard.jspa?rapidView=901&projectKey=HYRAX&view=planning.nodetail&issueLimit=100)* page and
-look at the *Tickets closed recently* item. From there, click on
-*Advanced* and edit the time range so it matches the time range since
-the past release to now, then *Export* that info as an Excel spreadsheet
-(the icon with a hat and a down arrow). YMMV regarding how easy this is
-and Jira's UI changes often. 
----
 
 ##### GitHub Issues
-To see the GitHub issues got to the Issues page for the repository and edit the 
+To see the GitHub issues go to the Issues page for the repository and edit the 
 search bar contents so that it reads: `is:issue state:closed closed:>2026-01-01`, 
-substituting the date of the last release for `2026-01-01`.
+substituting the date of the last release for `2026-01-01`. Review the closed tickets and use the information to build entries for the NEWS file related to this releaser.
 
 #### Update the **ChangeLog** file.
 

@@ -3,6 +3,13 @@
 #
 SINCE="${1:-"1970-01-01"}"
 FOLD="${2:-"72"}"
-gitlog-to-changelog --since="$SINCE" 2>&1 \
-    | fold -s -w "$FOLD" \
-    | awk '{if(!match($0,"^[0-9]|^[\\t]")){printf("\t%s\n",$0);}else{print $0;}}' -
+gl2cl="${gl2cl:-"gitlog-to-changelog"}"
+echo "gl2cl: $gl2cl"
+if ! which "$gl2cl"
+then
+    echo "OUCH - The $gl2cl script is not on your path! Unable to continue." >&2
+else
+    $gl2cl --since="$SINCE" 2>&1 \
+        | fold -s -w "$FOLD" \
+        | awk '{if(!match($0,"^[0-9]|^[\\t]")){printf("\t%s\n",$0);}else{print $0;}}' -
+fi

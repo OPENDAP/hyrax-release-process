@@ -70,7 +70,7 @@ gitlog-to-changelog --since="1970-01-01" 2>&1 | fold -s -w 72 | awk '{if(!match(
 ```
 
 Save the result to a temp file and combine the two files:
-: **cat tmp ChangeLog \> ChangeLog.tmp; mv ChangeLog.tmp ChangeLog** If
+: **cat recent_change_log.txt ChangeLog \> ChangeLog.tmp; mv ChangeLog.tmp ChangeLog** If
 you're making the first ChangeLog entries, then you'll need to create
 the ChangeLog file first.
 **Tip**: *When you're making the commit log entries, use line breaks so
@@ -79,7 +79,8 @@ ChangeLog will be readable. That is, use lines \< 80 characters long.*
 #### Update the NEWS file
 
 To update the NEWS file, just read over the new ChangeLog entries and
-summarize. 
+summarize. If you choose to do this with an LLM, please be sure to carefully review the results for "dreaming" or "garbage"".
+
 - Look at the way the NEWS file is formatted and continue with same.
 - Start a new section for this release at the top of the file.
 - Add the version number and the date at the beginning of the section

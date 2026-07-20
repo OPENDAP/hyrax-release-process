@@ -39,71 +39,10 @@ tags.
 ```
 AC_INIT(bes, ###.###.###, opendap-tech@opendap.org)
 ```
----
-* ***debian/changelog***
-see [Debian ChangeLog details](https://www.debian.org/doc/manuals/maint-guide/dreq.en.html#changelog))
-> ***Why continue with debian packaging numbers? We are building on rhel8 and rhel9 and that's it. No debian packages etc. So Can we drop it?***
-
-
-> **Take Note!** *The `debian/changelog` is the "single source of truth"
-for the libdap4 version in the debian packaging. If this does not agree
-with the version being packaged the package build will fail.*
----
 * ***ChangeLog***
 * ***NEWS***
 * ***README.md***
 * ***INSTALL***
-
-### Update the internal library (API/ABI) version numbers.
-
----
-> **_TODO_**: **WHY DO THIS?** Does API/ABI versioning have any use or meaning now that we are no longer producing RPM files?
----
-The BES is ***not*** a shared library, it is a set of c++ applications
-that are typically built as statically linked binaries. Because of this
-the usual CURRENT:REVISION:AGE tuples used to express the binary
-compatibility state of a c++ shared object library have little meaning
-for the BES code. So, what we choose to do is simply bump the REVISION
-numbers by one value for each release.
-
-- In the **configure.ac** file locate each of:
-  - LIB_DIS_REVISION
-  - LIB_PPT_REVISION
-  - LIB_XML_CMD_REVISION
-- Increase the value of each by one (1).
-- Save the file.
-- Update the text documentation files and version numbers in the
-  configuration files:
-
-Example of the relevant section from configure.ac:
-
-    LIB_DIS_CURRENT=18
-    LIB_DIS_AGE=3
-    LIB_DIS_REVISION=3
-    AC_SUBST(LIB_DIS_CURRENT)
-    AC_SUBST(LIB_DIS_AGE)
-    AC_SUBST(LIB_DIS_REVISION)
-    LIBDISPATCH_VERSION="$LIB_DIS_CURRENT:$LIB_DIS_REVISION:$LIB_DIS_AGE"
-    AC_SUBST(LIBDISPATCH_VERSION)
-
-    LIB_PPT_CURRENT=5
-    LIB_PPT_AGE=1
-    LIB_PPT_REVISION=2
-    AC_SUBST(LIB_PPT_CURRENT)
-    AC_SUBST(LIB_PPT_AGE)
-    AC_SUBST(LIB_PPT_REVISION)
-    LIBPPT_VERSION="$LIB_PPT_CURRENT:$LIB_PPT_REVISION:$LIB_PPT_AGE"
-    AC_SUBST(LIBPPT_VERSION)
-
-    LIB_XML_CMD_CURRENT=5
-    LIB_XML_CMD_AGE=4
-    LIB_XML_CMD_REVISION=2
-    AC_SUBST(LIB_XML_CMD_CURRENT)
-    AC_SUBST(LIB_XML_CMD_AGE)
-    AC_SUBST(LIB_XML_CMD_REVISION)
-    LIBXMLCOMMAND_VERSION="$LIB_XML_CMD_CURRENT:$LIB_XML_CMD_REVISION:$LIB_XML_CMD_AGE"
-    AC_SUBST(LIBXMLCOMMAND_VERSION)
-
 
 
 ### Update the libdap version
@@ -129,19 +68,6 @@ previous example the value would be:
 
         - LIBDAP_RPM_VERSION=3.20.9-0
 
-#### ~~Update the libdap version in the RPM spec files~~
-
-~~Affected Files
-*bes.spec\*.in*~~
-
-~~Update the `bes.spec*.in` files by changing the `Requires` and
-`BuildRequires` entries for libdap. Based on our example the result
-would be:~~
-
-  ~~Requires:       libdap >= 3.20.9
-    BuildRequires:  libdap-devel >= 3.20.9~~
-~~(*These lines may not be adjacent to each other in the spec files*)~~
-
 ### Update the libdap version in the README.md file
 
 #### Affected Files
@@ -159,16 +85,6 @@ GitHub release page for the BES.
 See the section on this page titled "*Get the BES DOI from Zenodo*" for
 more details about getting the DOI markdown.
 
-### ~~Update the RPM dependencies~~
-
-~~Affected Files:
-*bes.spec\*.in*~~
-
-~~In the RPM *.spec* file, update the dependencies as needed.~~
-
-~~- The libdap version dependency was covered in a previous step.~~
-~~- Be attentive to changes that have been made to the hyrax-dependencies~~
-  ~~since the last release.~~
 
 ### Update the module version numbers for humans
 
@@ -193,16 +109,6 @@ the Makefile.am.
 
 See below for special info about the HDF4/5 modules (which also applies
 to any modules not in the BES GitHub repo).
-
-## ~~For the BES HDF4/5 modules (BES only)~~
-
-1.  ~~*Make sure that you are working on the master branch of each
-    module!!*~~
-2.  ~~Goto those directories and update the ChangeLog, NEWS, README, and
-    INSTALL files (even though INSTALL is not used by many).~~
-3.  ~~Update the module version numbers in their respective Makefile.am
-    files.~~
-4.  ~~Commit and Push these changes.~~
 
 
 ## [Common Release Tasks](common_release_tasks.md)
@@ -272,48 +178,8 @@ bookkeeping for releases and removes one source of error.*
         **Update this release**
 
 
-<!--
-Removing this because why do it? GitHub has it...
 
-## Publish and Sign The Source Release
 
-When the release is made on GitHub the source tar bundle is made
-automatically. However, this bundle is **not** the one we wish to
-publish because it requires people to have *autoconf* installed. Rather
-we want to use the result of "`make dist`" which will have the
-`configure` script pre-generated.
-
-All you need do is build the tar file using `make dist`, sign it, and
-push (or pull) these files onto www.opendap.org/pub/source.
-
-1.  Go to the **bes** project on your local machine and run
-    *`make dist`* which will make a bes-x.y.z,tar.gz file at the top
-    level of the **bes** project.
-2.  Use **gpg** to sign the tar bundle:
-
-    `gpg --detach-sign --local-user security@opendap.org bes-x.y.z.tgz`
-3.  Use **sftp** to push the signature file and the tar bundle to the
-    /httpdocs/pub/source directory on www.opendap.org
-
-    *(Assuming your current working directory is the top of the **bes**
-    project)*
-
-    `sftp opendap@www.opendap.org`
-
-    `cd httpdocs/pub/source`
-
-    `put bes-x.y.z.tgz.sig`
-
-    `put bes-x.y.z.tgz`
-
-    `quit`
-4.  Check your work!
-    1.  Download the source tar bundle and signature from
-        www.opendap.org.
-    2.  Verify the signature:
-
-        `gpg --verify bes-x.y.z.tgz.sig bes-x.y.z.tgz`
--->
 ## Get the BES DOI from Zenodo
 
 Get the Zenodo DOI for the newly created BES release and add it to the
@@ -347,8 +213,6 @@ you have to search for the string:* `libdap4`
 ## Update the online reference documentation
 
 1.  *make gh-docs*
-
-
 
 ## BES Release Assets 
 Internal: 

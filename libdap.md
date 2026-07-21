@@ -53,6 +53,8 @@ AC_INIT(libdap, ###.###.###, opendap-tech@opendap.org)
 
 * *README.md*
 * *INSTALL*
+* *ChangeLog*
+* *NEWS*
 
 ##### API/ABI Version
 

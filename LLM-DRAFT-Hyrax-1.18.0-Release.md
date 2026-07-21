@@ -1,7 +1,7 @@
-# Hyrax 1.18.0
+# Hyrax 1.18
 
 
-## What's New For *hyrax-1.18.10*
+## What's New For *hyrax-1.18.0*
 ### 1. Performance & Cloud Optimization
 
 * **Direct S3 Access:** Replaced TEA redirects with presigned S3 URLs using TEA STS credentials. This was first applied to data requests and later expanded to initial DMR++ requests to dramatically lower response times.

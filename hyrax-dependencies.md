@@ -62,8 +62,8 @@ gpg --detach-sign --local-user security@opendap.org ../hyrax-dependencies-x.y.ta
 
 ## Tag The Release
 1.  Tag, and push the tag.
-    - *git tag -m "version-<number>" -a <numbers>*
-    - *git push origin <numbers>*
+    - *git tag -m "version-numbers" -a numbers*
+    - *git push origin numbers*
 
 ## Make The Release On GitHub
 1.  Goto the [GitHub 'tags' page for

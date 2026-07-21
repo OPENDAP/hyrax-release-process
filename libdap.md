@@ -45,12 +45,6 @@ change from bes-3.17.3 to bes-3.18.0
 ```
 AC_INIT(libdap, ###.###.###, opendap-tech@opendap.org)
 ```
-* *debian/changelog* - See [Debian ChangeLog](https://www.debian.org/doc/manuals/maint-guide/dreq.en.html#changelog) documentation)
-  > **Note**:
-  > The `debian/changelog` is the "single source of truth"
-  > for the libdap4 version in the debian packaging. If this does not agree
-  > with the version being packaged the package build will fail.*
-
 * *README.md*
 * *INSTALL*
 * *ChangeLog*

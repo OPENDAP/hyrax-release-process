@@ -1,7 +1,7 @@
 # Hyrax 1.18
 
 
-## What's New For *hyrax-1.18.0*
+## What's New For *hyrax-1.18.0* (From NGAP production deployment diff docs)
 ### 1. Performance & Cloud Optimization
 
 * **Direct S3 Access:** Replaced TEA redirects with presigned S3 URLs using TEA STS credentials. This was first applied to data requests and later expanded to initial DMR++ requests to dramatically lower response times.
@@ -60,7 +60,7 @@
 | **`1.17.1-173+` (Latest)** | Jun 11, 2026 | **Direct S3 DMR++ access**. Secured S3 cache keys with EDL user IDs. Timeout prevention by skipping NetCDF4 compression on floats. | *Truncated text* |
 
 
-# BES
+# BES (From ChangeLog)
 
 Here is a thematic summary of the provided Hyrax Backend Server (BES) change log covering the period from late March 2026 through mid-July 2026.
 
@@ -115,7 +115,7 @@ A large portion of the updates (primarily by developer `kyang2014`) focused on s
 * **GDAL Re-activation:** Re-enabled GDAL back into Travis CI/CD build environments and expanded multi-architecture testing configuration flags (**HYRAX-2012**, **HYRAX-1968**).
 
 ---
-# OLFS
+# OLFS (from ChangeLog)
 Here is a summary of the provided Hyrax / OLFS (OPeNDAP Line Formatted Server) change log covering developments from July 2025 through June 2026.
 
 

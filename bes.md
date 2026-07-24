@@ -94,7 +94,7 @@ and update as needed. Then run:
 - Remove the sentinel files that prevent the version updater from being
   run multiple times in succession without specific intervention:
 ```
-rm -v ../*/version_updated`**
+rm -v ../*/version_updated
 ```
 
 - Now run the version updater:

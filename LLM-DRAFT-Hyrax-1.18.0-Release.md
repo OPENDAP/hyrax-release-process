@@ -1,7 +1,10 @@
 # Hyrax 1.18
 
+* This release includes [changes that resolve **_CVE-2026-16637_**](https://kb.cert.org/vuls/id/305509)
+
 
 ## What's New For *hyrax-1.18.0* (From NGAP production deployment diff docs)
+
 ### 1. Performance & Cloud Optimization
 
 * **Direct S3 Access:** Replaced TEA redirects with presigned S3 URLs using TEA STS credentials. This was first applied to data requests and later expanded to initial DMR++ requests to dramatically lower response times.

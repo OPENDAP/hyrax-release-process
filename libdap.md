@@ -175,7 +175,7 @@ put *el9*
 ```
 Check your work!
 1.  Download the source tar bundle and signature from
-        www.opendap.org/pub.
+        www.opendap.org/pub/source.
 2.  Verify the signature:
 ```
 gpg --verify libdap-x.y.z.tgz.sig libdap-x.y.z.tgz

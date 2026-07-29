@@ -144,42 +144,42 @@ This will trigger an 'archive and DOI' process on the Zenodo system.
 
 ### Publish and Sign
 
-When the release is made on GitHub the source tar bundle is made
-automatically. However, this bundle is **not** the one we wish to
-publish because it requires people to have *autoconf* installed. Rather
-we want to use the result of "`make dist`" which will have the
-`configure` script pre-generated.
+#### Get The Files.
+Go to our S3 bucket, opendap.travis.build, and retrieve the libdap assets
+for the release. 
 
-All you need do is build the tar file using `make dist`, sign it, and
-push (or pull) these files onto www.opendap.org/pub/source.
+First, search the bucket by entering libdap-_version_ (say _libdap-3.22.0_)into the search bar. That search should locate the 2 regular RPM files (one for RHEL8 and another for RHEL9) and the source code tar ball. 
 
-1.  Go to the **libdap4** project on your local machine and run
-    `make dist` which will make a libdap-x.y.z.tar.gz file at the top
-    level of the **libdap4** project.
-2.  Use **gpg** to sign the tar bundle:
+Next search for libdap-devel-_version_ (say _libdap-devel-3.22.0_)to get the RHEL8 and RHEL9 developers packages.
 
-    `gpg --detach-sign --local-user security@opendap.org libdap-x.y.z.tar.gz`
-3.  Use **sftp** to push the signature file and the tar bundle to the
-    /httpdocs/pub/source directory on www.opendap.org
-
-    *(Assuming your current working directory is the top of the **bes**
-    project)*
-
-    `sftp opendap@www.opendap.org`
-
-    `cd httpdocs/pub/source`
-
-    `put libdap-x.y.z.tgz.sig`
-
-    `put libdap-x.y.z.tgz`
-
-    `quit`
-4.  Check your work!
-    1.  Download the source tar bundle and signature from
-        www.opendap.org.
-    2.  Verify the signature:
-
-        `gpg --verify libdap-x.y.z.tgz.sig libdap-x.y.z.tgz`
+You should find 5 files! If you don't it's time to look at the CI/CD logs for this build.
+#### Sign The Files
+Once you have these files you sign them by doing the following:
+```bash
+for i in *.rpm *.gz; do gpg --detach-sign --local-user security@opendap.org "$i"; done
+```
+#### Upload
+Beginning in your local directory that contains the various release assets and their signature files, login to the webhost.
+```bash
+sftp -P 22 your-user-id@sftp.flywheelsites.com
+```
+Copy the RHEL8 RPMs and signatures like this:
+```bash
+cd org-opendap/opendap/pub/binaries/hyrax-VERSION/rocky-8
+put *el8*
+```
+Copy the RHEL9 RPMs and signatures like this:
+```bash
+cd org-opendap/opendap/pub/binaries/hyrax-VERSION/rocky-9
+put *el9*
+```
+Check your work!
+1.  Download the source tar bundle and signature from
+        www.opendap.org/pub.
+2.  Verify the signature:
+```
+gpg --verify libdap-x.y.z.tgz.sig libdap-x.y.z.tgz
+```
 
 ### Get the DOI from [Zenodo](https://zenodo.org)
 

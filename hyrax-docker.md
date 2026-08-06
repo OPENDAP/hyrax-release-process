@@ -6,7 +6,17 @@ The Hyrax Docker images are the primary release asset for Hyrax. These images ar
 
 The specific contents of the Hyrax docker image is dictated by the `build-recipe`. When we make a release we want to copy the build-recipe(s) used to build the release image(s) into the releases directory, renaming them with the Hyrax version and OS information.
 
-## Update The Hyrax Version Numbers.
+## 1) Make sure local branch up to date
+Before beginning, make sure your branch is up to date, and create a branch (no
+longer push to `master`).
+```
+git pull
+git checkout -b new_release
+```
+`NOTE`: As of Aug 2026, in the hyrax-docker release there are dual builds. The PR
+will be associated with the release of `el8`. To get the `el9` release, you will need to `fiddle` the `travis-build-recipe` for el9 and push directly.
+
+## 2) Update The Hyrax Version Numbers.
 In order to make an official numbered release of 
 Hyrax we need to update the Hyrax version numbers.
 
@@ -16,9 +26,9 @@ Hyrax we need to update the Hyrax version numbers.
 
   * Set the `TRAVIS_HYRAX_BUILD_OFFSET` value to the number of the last TravisCI build plus one. The previous commit and push will have triggered a TravisCI build. Find the build number for the previous commit in the TravisCI page for `hyrax-docker` and use that Travis build number plus 1.
 
-## Perform the [Common Release Tasks](common_release_tasks.md)
+## 3) Perform the [Common Release Tasks](common_release_tasks.md)
 
-## Copy the build recipe(s) to the releases' directory.
+## 4) Copy the build recipe(s) to the releases' directory.
   * Name the files `hyrax-<numbers>-TARGET_OS-build-recipe`
 
 Example: 
@@ -27,7 +37,7 @@ cp hyrax-docker/el9-build-recipe hyrax-docker/releases/hyrax-1.18.0-el9-build-re
 cp hyrax-docker/el8-build-recipe hyrax-docker/releases/hyrax-1.18.0-el8-build-recipe
 ```
 
-## Update The DockerHub Landing Pages
+## 5) Update The DockerHub Landing Pages
 In DockerHub each of our published Docker images has a landing page. The landing pages for the hyrax images contains an explanation and a list of links to official release version. These need to be updated. 
 
 To update:
@@ -40,29 +50,38 @@ To update:
       1.  Add the new release to the list of Release and Docker files.
       2.  Update the link to the 'Latest' Docker file.
 
-## Commit! 
+## 6) Commit! 
 * Commit the changes locally.
 * Push the commited changes to GitHub.
 
-## Tag the Repository.
+## 7) Tag the Repository.
+You may tag directly the PR, or after it has been merged. You will need the
+right permissions.
   1.  Make sure all changes have been pushed and merged to the master
     branch.
   2.  Since the Docker project is essentially linked to a Hyrax Release,
     tag this point in the master branch with the Hyrax release number
 ```
-    git tag -a hyrax-`<numbers>` -m "Hyrax `<number>`"`
-    git push origin hyrax-`<numbers>
+    git tag -a hyrax-<numbers> -m Hyrax <number>
+    git push origin hyrax-<numbers>
 ```
+If Travis builds successfuly, you may merge the PR upon approval.
 
-## Create a GitHub release
+
+## 8) Create a GitHub release
+Upon merging the release branch, you can proceed to create the GitHub release.
+
+`NOTE:` As of Aug 2026, the `master` branch builds the recipe for `el8`. At this point, after merging the release branch, you need to change the recipes in the
+`main` branch to build the recipe for `el9`. Push directly those changes to `master`. As a result of this 2-step build process, the offset for el9 will not begin with 0. See below the tag.
+
   * Goto the 'tags' page ('code' then 'tags' at the top of the directory window) and click the 'Tags' tab. There, click the ellipses (...) on the right of the 'version-\*' tag and:
-    1.  Enter a *title* for the release
+    1.  Enter a *title* for the release. For example: `hyrax-1.18.8-0-el8` or `hyrax-1.18.8-1-el9`. 
     2.  Copy the most recent text from the NEWS file into the *describe*
   field
     3.  Click *Update this release* or *Save draft*
   * This will trigger an 'archive and DOI' process on the Zenodo system.
 
-### Get the DOI from [Zenodo](https://zenodo.org)
+<!-- ### Get the DOI from [Zenodo](https://zenodo.org)
 
 1.  Goto [Zenodo](https://zenodo.org) and look at the 'upload' page.
     Since the libdap, BES and OLFS repositories are linked to Zenodo,
@@ -74,7 +93,7 @@ To update:
     into the info for the version back in GitHub land.
 4.  Also paste that into the README file. Commit using *\[skip ci\]* so
     we don't do a huge build (or do the build, it really doesn't matter
-    that much).
+    that much). -->
 
 Images for the above steps to help with the web UI: coming soon
 

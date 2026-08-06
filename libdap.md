@@ -15,12 +15,14 @@ changes to the code, and you know the CI build will fail, do so on a
 *release branch* that you can merge and discard later. Do not make a
 release branch unless you need to since it complicates making tags.
 
-### Update your local libdap4 code base
+### 1) Update your local libdap4 code base
+Before making any changes, make your local branch is up to date.
 
-1. Change to the _master_ branch. 
-2. Do a `git pull`
+* Change to the _master_ branch. 
+* Do a `git pull`
+* Create a branch: `git checkout -b new_release`.
 
-### Update the Version Numbers
+### 2) Update the Version Numbers
 
 There are really 2 version numbers for each of these project items. The
 *human* version (like version-3.17.5) and the *library* API/ABI version
@@ -32,7 +34,7 @@ example, we might make a major API/ABI change and have to change to a
 new Libtool version like `25:0:0` but the human version might only
 change from bes-3.17.3 to bes-3.18.0
 
-#### Version for Humans
+#### 2.1) Version for Humans
 
 1.  Determine the human version number. This appears to be a somewhat
     subjective process.
@@ -50,7 +52,7 @@ AC_INIT(libdap, ###.###.###, opendap-tech@opendap.org)
 * *ChangeLog*
 * *NEWS*
 
-##### API/ABI Version
+#### 2.2) API/ABI Version
 
 The library API/ABI version is represented as CURRENT:REVISION:AGE.
 
@@ -83,68 +85,38 @@ DAPLIB_REVISION=###
 DAPLIB_AGE=###
 ```
 
-### [Common Release Tasks](common_release_tasks.md)
-Perform the human driven [Common Release Tasks](common_release_tasks.md)
-and then come right back here.
+### 3) [Common Release Tasks](common_release_tasks.md)
+Perform the [Common Release Tasks](common_release_tasks.md).
 
-### Commit
-Commit and push the code. Wait for the CI/CD builds to complete. You
-must be working on the *master* branch to get the CD package builds to
-work.
+### 4) Trigger CI/CD builds to complete. 
+Commit and push. You must be working on the *PR* branch. Check the status
+of the build for any red flag. If Travis CI/CD build successfully, then
+the PR is ready to be merged.
 
-### Update the Build Offset
-> **TIP**: *Setting the build offset correctly will set the build number for the
-new release to "0".*
+### 5) Tag The Release
 
-In the file `travis/travis_libdap_build_offset.sh` set the value of
-`LIBDAP_TRAVIS_BUILD_OFFSET` to the number of the last TravisCI build
-plus one. The previous commit and push will have triggered a TravisCI
-build. Find the build number for the previous commit in [the TravisCI
-page for libdap4](https://app.travis-ci.com/github/OPENDAP/libdap4) and
-use that build number plus 1.
+You may tag now (before merging the PR). It requires the right permissions
+to do so.
 
-This is not the build number for the package. It is the build number
-used by Travis, which is the total number of times Travis has built
-the code. This number is the build number on the left-hand TOC
+1.  `git tag -m "hyrax-<number>" -a hyrax-<numbers>` 
+2.  `git push origin hyrax-<numbers>`
 
-Once you have updated the `travis/travis_libdap_build_offset.sh` commit
-and push this change. Do NOT use a `[skip ci]` string in the commit
-message as it is important that this commit run through the entire CI
-process.
-
-### Tag The Release
-
-In the past we manually made the tags for builds. Since we started a
-'build number release' for NASA, we automated that.
-
-If this is part of Hyrax, also tag this point in the master branch with
-the Hyrax release number:
-
-1.  **git tag -m "hyrax-<number>" -a hyrax-<numbers>** I think we can
-    leave this tag as *hyrax-<version>* since it's for our own
-    bookkeeping.
-2.  **git push origin hyrax-<numbers>**
-
-    NB: Instead of tagging the HDF4/5 modules, use the saved commit
-    hashes that git tracks for submodules. This cuts down on the
-    bookkeeping for releases and removes one source of error.
-
-### Create the release on GitHub
+### 6) Create the release on GitHub
 
 Goto the 'tags' page ('code' then 'tags' at the top of the directory
 window) and click the 'Tags' tab. There, click the ellipses (...) on the
 right of the 'version-\*' tag and:
 
-1.  Enter a *title* for the release
+1.  Enter a *title* for the release. For example: `libdap-x.yy.x for Hyrax-1.xx.y`
 2.  Copy the most recent text from the NEWS file into the *describe*
     field
 3.  Click *Update this release* or *Save draft*
 
 This will trigger an 'archive and DOI' process on the Zenodo system.
 
-### Publish and Sign
+### 7) Publish and Sign
 
-#### Get The Files.
+#### 7.1) Get The Files.
 Go to our S3 bucket, opendap.travis.build, and retrieve the libdap assets
 for the release. 
 
@@ -153,13 +125,15 @@ First, search the bucket by entering libdap-_version_ (say _libdap-3.22.0_)into 
 Next search for libdap-devel-_version_ (say _libdap-devel-3.22.0_)to get the RHEL8 and RHEL9 developers packages.
 
 You should find 5 files! If you don't it's time to look at the CI/CD logs for this build.
-#### Sign The Files
+#### 7.2) Sign The Files
 Once you have these files you sign them by doing the following:
 ```bash
 for i in *.rpm *.gz; do gpg --detach-sign --local-user security@opendap.org "$i"; done
 ```
-#### Upload
-Beginning in your local directory that contains the various release assets and their signature files, login to the webhost.
+#### 7.3) Upload
+Beginning in your local directory that contains the various release assets and their signature files, login to the webhost. You will need to have credentials
+to access FlyWheels site that hosts the OPeNDAP website.
+
 ```bash
 sftp -P 22 your-user-id@sftp.flywheelsites.com
 ```
@@ -181,8 +155,11 @@ Check your work!
 gpg --verify libdap-x.y.z.tgz.sig libdap-x.y.z.tgz
 ```
 
-### Get the DOI from [Zenodo](https://zenodo.org)
+### 8) Get the DOI from [Zenodo](https://zenodo.org)
 
+The DOI from Zenodo is automatically updated since it uses `latest`.
+
+<!-- 
 1.  Goto [Zenodo](https://zenodo.org) and look at the 'upload' page.
     Since the libdap, BES and OLFS repositories are linked to Zenodo,
     the newly-tagged code is uploaded to Zenodo automatically and a DOI
@@ -193,11 +170,11 @@ gpg --verify libdap-x.y.z.tgz.sig libdap-x.y.z.tgz
     into the info for the version back in GitHub land.
 4.  Also paste that into the README file. Commit using *\[skip ci\]* so
     we don't do a huge build (or do the build, it really doesn't matter
-    that much).
+    that much). -->
 
 Images for the above steps to help with the web UI: coming soon
 
-### Update the online reference documentation
+### 9) Update the online reference documentation
 
 1.  *make gh-docs*
 

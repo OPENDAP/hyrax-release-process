@@ -1,7 +1,7 @@
 # hyrax-dependencies Release Process
 Here is the process for creating official numbered releases of the `hyrax-docker` module. This is typically done in conjunction with an official Hyrax release.
 
-### Update the Version Numbers
+## 1) Update the Version Numbers
 
 If the review of the ChangeLog indicates that there have been changes
 since the last release, increment the version number in the Makefile.
@@ -9,7 +9,7 @@ since the last release, increment the version number in the Makefile.
 Make sure any change in version number is also reflected in the NEWS
 file.
 
-## [Common Release Tasks](common_release_tasks.md)
+## 2) [Common Release Tasks](common_release_tasks.md)
 Perform the human driven [Common Release Tasks](common_release_tasks.md)
 and then come right back here.
 
@@ -60,12 +60,12 @@ gpg --detach-sign --local-user security@opendap.org ../hyrax-dependencies-x.y.ta
 
 -->
 
-## Tag The Release
+## 3) Tag The Release
 1.  Tag, and push the tag.
-    - *git tag -m "version-numbers" -a numbers*
-    - *git push origin numbers*
+    - `git tag -m "version-numbers" -a numbers`
+    - `git push origin numbers`
 
-## Make The Release On GitHub
+## 4) Make The Release On GitHub
 1.  Goto the [GitHub 'tags' page for
     *hyrax-dependencies*](https://github.com/OPENDAP/hyrax-dependencies/tags).
 2.  Click the "Create release from tag" button
@@ -74,7 +74,7 @@ gpg --detach-sign --local-user security@opendap.org ../hyrax-dependencies-x.y.ta
 4.  Copy the most recent text from the NEWS file into the describe field
 5.  Click Save/Update this release.
 
-## hyrax-dependencies Release Assets 
+## 5) hyrax-dependencies Release Assets 
 Internal: 
 * Our CICD produces a tar file of the installed includes, executables, and libraries of the hyrax-dependencies. The tar file is placed in S3 for use in building the `bes_core` docker images.
 

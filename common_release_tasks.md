@@ -5,29 +5,28 @@ changes to the code, and you know the CI build will fail, do so on a
 *release branch* that you can merge and discard later. Do not make a
 release branch unless you need to since it complicates making tags.
 
-### Verify the code base
+### 1) Verify the code base
 
-1.  We release using the *master*|*main* branch. The code on
+*  We release using the *master*|*main* branch. The code on
 *master*|*main* must pass the CI build.
-2.  Make sure that the source code you're using for the following steps
+*  Make sure that the source code you're using for the following steps
     is up-to-date. (*git pull*)
 
-### Update the Version Numbers
+### 2) Update the Version Numbers
 The Hyrax components each maintain their own version numbers. Each component 
 has its own version change process/instructions. For the purposes of these
 general instructions, do that part now if you have not already. The version
 numbers are needed in the next bit.
 
-### Update the Build Offset
+### 3) Update the Build Offset
 > *Setting the build offset correctly will set the build number for the
 new release to "0".*
 
 In the file `travis/*_build_offset.sh` set the value of
-`LIBDAP_TRAVIS_BUILD_OFFSET` to the number of the last TravisCI build
+`_TRAVIS_BUILD_OFFSET` to the number of the last TravisCI build
 plus one. The previous commit and push will have triggered a TravisCI
-build. Find the build number for the previous commit in [the TravisCI
-page for libdap4](https://app.travis-ci.com/github/OPENDAP/libdap4) and
-use that build number plus 1.
+build. For example, find the build number for the previous commit in
+[the TravisCI page for libdap4](https://app.travis-ci.com/github/OPENDAP/libdap4) and use that build number plus `2`.
 
 This is not the build number for the package. It is the build number
 used by Travis, which is the total number of times Travis has built
@@ -39,19 +38,19 @@ message as it is important that this commit run through the entire CI
 process.
 
 
-#### What Issues Were Closed That Affect The Released Software 
+### 4) What Issues Were Closed That Affect The Released Software 
 It's helpful to have, in the **NEWS** file, the Website and the release
 notes, a list of the tickets that have been closed since the last
 release. There are two ticketing systems in play for our work, NASA's Jira and
 out GitHub repository. 
 
 
-##### GitHub Issues
+#### GitHub Issues
 To see the GitHub issues go to the Issues page for the repository and edit the 
 search bar contents so that it reads: `is:issue state:closed closed:>2026-01-01`, 
 substituting the date of the last release for `2026-01-01`. Review the closed tickets and use the information to build entries for the NEWS file related to this releaser.
 
-#### Update the **ChangeLog** file.
+### 5) Update the **ChangeLog** file.
 
 Use the script [`gitlog-to-changelog`](./bin/gitlog-to-changelog) (which can be found with Google 
 or there's a copy checked in to the bin directory of this repository.) 
@@ -76,7 +75,7 @@ the ChangeLog file first.
 **Tip**: *When you're making the commit log entries, use line breaks so
 ChangeLog will be readable. That is, use lines \< 80 characters long.*
 
-#### Update the NEWS file
+### 6) Update the NEWS file
 
 To update the NEWS file, just read over the new ChangeLog entries and
 summarize. If you choose to do this with an LLM, please be sure to carefully review the results for "dreaming" or "garbage"".

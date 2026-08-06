@@ -13,7 +13,7 @@ number is changed) should contain:
 - Updated tests.
 - Changes to production rules.
 
-## Make sure the code is ready to release
+## 1) Make sure the code is ready to release
 
 Make sure that all the developers working on the code have checked in
 their working copies of the trunk, and that all development branches
@@ -28,6 +28,7 @@ In a new directory get a fresh copy of the trunk:
 git clone https://github.com/opendap/olfs
 git checkout master
 git pull
+git checkout -b new_release
 ```
 
 <!--
@@ -85,7 +86,7 @@ The `testsuite` supports several notable command line options:
   (default: ~/.netrc)
 -->
 
-## Determine OLFS Version Numbers
+## 2) Determine OLFS Version Numbers
 **_Every version has a number!_**
 
 1.  Look in the NEWS and README.md files to determine the previous
@@ -104,9 +105,8 @@ The `testsuite` supports several notable command line options:
     - Build the versioned software distribution bundles.
 
 
-## [Common Release Tasks](common_release_tasks.md)
-Perform the human driven [Common Release Tasks](common_release_tasks.md)
-and then come right back here.
+## 3) [Common Release Tasks](common_release_tasks.md)
+Perform the [Common Release Tasks](common_release_tasks.md).
 
 <!--
 
@@ -134,7 +134,7 @@ Update version number.
 Review content to make sure it's current.
 -->
 
-
+<!-- 
 ## Update the Build Offset
 
 *Setting the build offset correctly will set the build number for the
@@ -157,9 +157,9 @@ build plus one. The previous commit and push will have triggered a
 TravisCI build. Find the build number for the previous commit in [the
 TravisCI page for the
 OLFS](https://app.travis-ci.com/github/OPENDAP/olfs) and use that build
-number plus 1.
+number plus 1. -->
 
-## Check in and push the changes
+## 4) Check in and push the changes
 
 In the local copy of the OLFS master branch in which you updated the
 **ChangeLog** and other files:
@@ -174,22 +174,29 @@ git push
 Once this is done, use GitHub to tag the code you just committed both
 with its version and the version of hyrax to which it belongs:
 
-#### Tag the release
+### 4.1) Tag the release
+This can be done before merging the PR, or after. But you will require to have
+the correct permissions.
+
 ``` bash
 git tag -m "olfs-<numbers>" -a <numbers>
 git push origin <numbers>
 ```
 
 
-### Make The Release
 
-- Make the release in GitHub.
-  - Look at previous releases for title format.
-  - Use the NEWS entry for the description.
-- Get The DOI for the release from Zendodo.
+## 5) Make The Release
+After the PR has been merged, and Travis Builds successfully, you can now make the
+release in GitHub. 
+
+- Look at previous releases for title format.  For example: `olfs-x.yy.x for Hyrax-1.xx.y`
+
+
+- Use the NEWS entry for the description.
+<!-- - Get The DOI for the release from Zendodo.
   - Use the search api to find `olfs xx.yy.zz`
-  - Copy the markup for the DOI badge and then
-- Update the Release Page in GitHub with the DOI markup.
+  - Copy the markup for the DOI badge and then -->
+<!-- - Update the Release Page in GitHub with the DOI markup. -->
 
 <!--
 

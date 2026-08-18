@@ -51,6 +51,10 @@ AC_INIT(libdap, ###.###.###, opendap-tech@opendap.org)
 * *INSTALL*
 * *ChangeLog*
 * *NEWS*
+* *CMakeLists.txt* - Look for:
+```
+set(LIBDAP_VERSION "#.##.#")
+```
 
 #### 2.2) API/ABI Version
 
